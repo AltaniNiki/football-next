@@ -1,16 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import { ThemeProvider, CssBaseline } from '@mui/material';
+import BaseApp from "../components/BaseApp"
+import LeagueList from "../components/League/LeagueList"
+import theme from '../theme';
+import Grid from "@mui/material/Grid";
+import Container from "@mui/material/Container"
+import ReduxProvider from '../app/store/ReduxProvider';
+import './globals.css';
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,8 +21,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <body >
+        <AppRouterCacheProvider>
+          <ThemeProvider theme={theme}>
+            <ReduxProvider>
+              <CssBaseline />
+              <BaseApp></BaseApp>
+              <Container style={{ marginTop: '64px' }}>
+                <Grid container>
+                  <Grid size={4}>
+                    <LeagueList />
+                  </Grid>
+                  <Grid size={8}>
+                    {children}
+                  </Grid>
+                </Grid>
+              </Container>
+            </ReduxProvider>
+          </ThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type LeagueState = { league: object, standing: object };
-const initialState: LeagueState = { league: {}, standing: {} };
+type LeagueState = { league: object, standing: object, matches: Array<object> };
+const initialState: LeagueState = { league: {}, standing: {}, matches: [] };
 
 const leagueSlice = createSlice({
     name: 'league',
@@ -11,11 +11,13 @@ const leagueSlice = createSlice({
             state.league = action.payload;
         },
         setStanding(state, action: PayloadAction<object>) {
-            console.log('action', action.payload)
             state.standing = action.payload
+        },
+        setMatches(state, action: PayloadAction<Array<object>>) {
+            state.matches = action.payload
         }
     },
 });
 
-export const { setLeague, setStanding } = leagueSlice.actions;
+export const { setLeague, setStanding, setMatches } = leagueSlice.actions;
 export default leagueSlice.reducer;

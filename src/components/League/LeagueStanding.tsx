@@ -63,23 +63,6 @@ export default function LeagueStanding() {
 
     const standing = useAppSelector((state) => state.league.standing)
 
-    const standingArray = React.useMemo(() => {
-        if (!Array.isArray(standing)) return [];
-        return standing.map((s: any) => {
-            return {
-                id: `rank-${s.rank}`,
-                rank: s.rank,
-                match: s.all.played,
-                wins: s.all.win,
-                draw: s.all.draw,
-                lose: s.all.lose,
-                goals: s.all.goals.for + ':' + s.all.goals.against,
-                team: s.team
-            }
-        })
-    }, [standing])
-
-
     return (
         <Box>
             {standing.length > 0 && (<BaseTable headers={headers} data={standing} supportPagination={false} rowKey="rank" columnSlots={{

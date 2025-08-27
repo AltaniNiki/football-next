@@ -28374,6 +28374,7 @@ export default function LeagueList() {
     }, [leagueList])
 
 
+
     const fetchData = async () => {
         const res = await fetch('/api/leagues?country=Greece');
         if (!res.ok) throw new Error('Failed to fetch');
@@ -28392,7 +28393,7 @@ export default function LeagueList() {
     const onSelectLeague = (data: object) => {
         console.log('on select league ', data)
         dispatch(setLeague(data))
-        router.push(`/league/${data.league.id}`)
+        router.push(`/league`)
     }
 
     return (

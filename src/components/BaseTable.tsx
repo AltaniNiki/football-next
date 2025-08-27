@@ -17,18 +17,29 @@ type HeaderProps = {
     key: string
 }
 
+type ColumnSlotProps<T> = {
+    row: T;                 // όλα τα δεδομένα της γραμμής
+    value: any;             // row[h.key] για αυτό το κελί
+    header: HeaderProps;    // info για τη στήλη (title, key, align...)
+    rowIndex: number;       // index γραμμής
+    colIndex: number;       // index στήλης
+};
 
-type BasicTableProps = {
+
+type BasicTableProps<T extends Record<string, any>> = {
     headers: HeaderProps[];
     data: Record<string, any>[];
     page?: number;
     perPage?: number;
+    rowKey?: string,
     onPageChange?: (newPage: number) => void,
     onRowsPerPageChange?: (event: unknown) => void,
+    // “v-slot” ανά κολόνα: { [header.key]: (props) => ReactNode }
+    columnSlots?: Partial<Record<string, (p: ColumnSlotProps<T>) => React.ReactNode>>;
     supportPagination?: boolean
 };
 
-export default function BasicTable({ headers, data, page, perPage, supportPagination, onPageChange, onRowsPerPageChange }: BasicTableProps) {
+export default function BasicTable<T extends Record<string, any>>({ headers, data, page, perPage, supportPagination, rowKey, onPageChange, onRowsPerPageChange, columnSlots = {}, }: BasicTableProps<Τ>) {
     const optionsList = [5, 10, 30, 50]
     return (
         <TableContainer component={Paper}>
@@ -45,12 +56,15 @@ export default function BasicTable({ headers, data, page, perPage, supportPagina
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {data.map((d: any) => {
-                        return (<TableRow key={'id_row_' + d.id}>
-                            {headers.map((h: HeaderProps) => {
+                    {data.map((row: any, rIdx) => {
+                        return (<TableRow key={'id_row_' + row[rowKey]}>
+                            {headers.map((h: HeaderProps, cIdx) => {
+                                const value = row[h.key];
+                                const slot = columnSlots[h.key];
+
                                 return (
-                                    <TableCell key={'id_' + d.id + '_' + h.key}>
-                                        {d[h.key]}
+                                    <TableCell key={'id_' + row[rowKey] + '_' + h.key}>
+                                        {slot ? slot({ row, value, header: h, rowIndex: rIdx, colIndex: cIdx }) : (value ?? "")}
                                     </TableCell>
                                 )
                             })}

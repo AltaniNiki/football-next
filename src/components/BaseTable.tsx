@@ -57,13 +57,14 @@ export default function BasicTable<T extends Record<string, any>>({ headers, dat
                 </TableHead>
                 <TableBody>
                     {data.map((row: any, rIdx) => {
-                        return (<TableRow key={'id_row_' + row[rowKey]}>
+                        const rowKeyValue = rowKey ? row[rowKey] : `row_${rIdx}`;
+                        return (<TableRow key={'id_row_' + rowKeyValue}>
                             {headers.map((h: HeaderProps, cIdx) => {
                                 const value = row[h.key];
                                 const slot = columnSlots[h.key];
 
                                 return (
-                                    <TableCell key={'id_' + row[rowKey] + '_' + h.key}>
+                                    <TableCell key={'id_' + rowKeyValue + '_' + h.key}>
                                         {slot ? slot({ row, value, header: h, rowIndex: rIdx, colIndex: cIdx }) : (value ?? "")}
                                     </TableCell>
                                 )

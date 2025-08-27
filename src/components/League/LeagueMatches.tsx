@@ -47,7 +47,7 @@ export default function LeagueMatches() {
     return (
         <Box>
             {matches.length > 0 && (
-                <BaseTable headers={headers} data={matches} supportPagination={false} rowKey="fixture" columnSlots={{
+                <BaseTable headers={headers} data={matches} supportPagination={false} columnSlots={{
                     round: ({ row }) => (
                         <span>{row.league.round}</span>
                     ),

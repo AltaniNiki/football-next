@@ -39,7 +39,7 @@ export default function LeagueTopScorers() {
                 data={topScorers}
                 supportPagination={false}
                 columnSlots={{
-                    players: ({ row }) => (
+                    player: ({ row }) => (
                         <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '5px' }}>
                             <img
                                 src={row.player.photo}

@@ -4,7 +4,7 @@ import * as React from "react";
 import Box from "@mui/material/Box"
 import BaseTable from "../BaseTable"
 import { useAppSelector } from "@/app/store/hooks";
-
+import { useRouter } from "next/navigation";
 
 
 
@@ -60,14 +60,21 @@ export default function LeagueStanding() {
         show: true
     }
     ];
+    const router = useRouter();
+
+
 
     const standing = useAppSelector((state) => state.league.standing)
+    const onSelectTeam = (row: object) => {
+        console.log('team--->', row)
+        router.push(`/team/${row.id}`)
+    }
 
     return (
         <Box>
             {standing.length > 0 && (<BaseTable headers={headers} data={standing} supportPagination={false} rowKey="rank" columnSlots={{
                 team: ({ row }) => (
-                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8 }} onClick={() => onSelectTeam(row.team)}>
                         <img
                             src={row.team.logo}
                             alt={row.team.name}
@@ -75,7 +82,7 @@ export default function LeagueStanding() {
                             height={20}
                             style={{ objectFit: "contain" }}
                         />
-                        <span>{row.team.name}</span>
+                        <span >{row.team.name}</span>
                     </div>
                 ),
                 match: ({ row }) => (

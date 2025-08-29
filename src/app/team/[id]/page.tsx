@@ -8,6 +8,7 @@ import TeamCard from "@/components/Team/TeamCard";
 export default function TeamPage({ params }: { params: Promise<{ id: string }> }) {
 
     const [team, setTeam] = React.useState(null);
+
     const { id } = React.use(params);
 
     const fetchData = async () => {
@@ -16,6 +17,9 @@ export default function TeamPage({ params }: { params: Promise<{ id: string }> }
             // if (!res.ok) throw new Error("Failed to fetch");
             // const data = await res.json();
             // console.log(data)
+
+
+            // get Team
             var temp = {
                 "team": {
                     "id": 50,
@@ -37,7 +41,13 @@ export default function TeamPage({ params }: { params: Promise<{ id: string }> }
                 }
             }
             // setTeam(data[0])
-            setTeam(temp)
+
+            // getTransfer
+            // const res = await fetch(`/api/transfers?id=${team.team.id}`);
+            // if (!res.ok) throw new Error("Failed to fetch");
+            // const transfers = await res.json();
+            // console.log(transfers)
+
         } catch (e) {
             throw e
         }

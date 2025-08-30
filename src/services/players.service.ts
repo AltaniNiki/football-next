@@ -5,3 +5,9 @@ export async function getTopScores(league: string, season: string) {
     return data.response;
 }
 
+export async function getSquads(teamId: string) {
+    const { data } = await apiClient.get(`/players/squads?team=${teamId}`);
+    return data.response;
+}
+
+

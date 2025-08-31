@@ -2,12 +2,15 @@ import * as React from "react";
 import Box from "@mui/material/Box"
 import { useAppSelector } from "@/app/store/hooks";
 import BasicTable from "../BaseTable";
-
+import Grid from "@mui/material/Grid";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 
 
 export default function TeamPlayers() {
 
     const players = useAppSelector((state) => state.team.players)
+    const coach = useAppSelector((state) => state.team.coach)
 
     const headers = [
         {
@@ -40,27 +43,50 @@ export default function TeamPlayers() {
         }
     ]
 
-
     return (
         <Box>
-            {players.length > 0 && (
-                <BasicTable headers={headers} data={players} supportPagination={false} rowKey="id" columnSlots={{
-                    player: ({ row }) => (
-                        <div style={{ display: "flex", alignItems: "center", gap: 8 }} >
-                            <img
-                                src={row.photo}
-                                alt={row.name}
-                                width={20}
-                                height={20}
-                                style={{ objectFit: "contain" }}
-                            />
-                            <span >{row.name}</span>
-                        </div>
-                    )
-                }}>
+            <Grid container>
+                <Grid size={12} sx={{ marginBottom: '5px' }}>
+                    <Card>
+                        <CardContent>
+                            <span>Coach:</span>
+                            <strong >
+                                <img
+                                    src={coach.photo}
+                                    alt={coach.name}
+                                    width={20}
+                                    height={20}
+                                    style={{ objectFit: "contain" }}
+                                />
+                                <span>{coach?.name}</span>
+                            </strong>
 
-                </BasicTable>
-            )}
+                        </CardContent>
+                    </Card>
+                </Grid>
+                <Grid size={12}>
+                    {players.length > 0 && (
+                        <BasicTable headers={headers} data={players} supportPagination={false} rowKey="id" columnSlots={{
+                            player: ({ row }) => (
+                                <div style={{ display: "flex", alignItems: "center", gap: 8 }} >
+                                    <img
+                                        src={row.photo}
+                                        alt={row.name}
+                                        width={20}
+                                        height={20}
+                                        style={{ objectFit: "contain" }}
+                                    />
+                                    <span >{row.name}</span>
+                                </div>
+                            )
+                        }}>
+
+                        </BasicTable>
+                    )}
+                </Grid>
+            </Grid>
+
+
         </Box>
     )
 }

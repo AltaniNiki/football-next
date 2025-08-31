@@ -8,7 +8,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import TeamPlayers from "@/components/Team/TeamPlayers";
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { setTransfers, setPlayers } from "@/app/store/slices/teamSlice"
+import { setTransfers, setPlayers, setCoach } from "@/app/store/slices/teamSlice"
 
 export default function TeamPage({ params }: { params: Promise<{ id: string }> }) {
 
@@ -17205,6 +17205,78 @@ export default function TeamPage({ params }: { params: Promise<{ id: string }> }
             }
 
             dispatch(setPlayers(tempPlayers.players))
+
+            // get Coach
+            // const res = await fetch(`/api/team/coach?teamId=${temp.team.id}`);
+            // if (!res.ok) throw new Error("Failed to fetch");
+            // const coach = await res.json();
+            // console.log('coach--->', coach)
+            // dispatch(setCoach(coach[0]))
+
+            var tempCoach = [
+                {
+                    "id": 4,
+                    "name": "Guardiola",
+                    "firstname": "Josep",
+                    "lastname": "Guardiola i Sala",
+                    "age": 54,
+                    "birth": {
+                        "date": "1971-01-18",
+                        "place": "Santpedor",
+                        "country": "Spain"
+                    },
+                    "nationality": "Spain",
+                    "height": "180 cm",
+                    "weight": "70 kg",
+                    "photo": "https://media.api-sports.io/football/coachs/4.png",
+                    "team": {
+                        "id": 50,
+                        "name": "Manchester City",
+                        "logo": "https://media.api-sports.io/football/teams/50.png"
+                    },
+                    "career": [
+                        {
+                            "team": {
+                                "id": 50,
+                                "name": "Manchester City",
+                                "logo": "https://media.api-sports.io/football/teams/50.png"
+                            },
+                            "start": "2016-07-01",
+                            "end": null
+                        },
+                        {
+                            "team": {
+                                "id": 157,
+                                "name": "Bayern Munich",
+                                "logo": "https://media.api-sports.io/football/teams/157.png"
+                            },
+                            "start": "2013-06-01",
+                            "end": "2016-06-01"
+                        },
+                        {
+                            "team": {
+                                "id": 529,
+                                "name": "Barcelona",
+                                "logo": "https://media.api-sports.io/football/teams/529.png"
+                            },
+                            "start": "2008-07-01",
+                            "end": "2012-06-01"
+                        },
+                        {
+                            "team": {
+                                "id": 712,
+                                "name": "Barcelona II",
+                                "logo": "https://media.api-sports.io/football/teams/712.png"
+                            },
+                            "start": "2007-06-01",
+                            "end": "2008-06-01"
+                        }
+                    ]
+                }
+            ]
+
+            dispatch(setCoach(tempCoach[0]))
+
 
         } catch (e) {
             throw e

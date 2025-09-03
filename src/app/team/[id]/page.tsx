@@ -7,13 +7,14 @@ import TeamCard from "@/components/Team/TeamCard";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import TeamPlayers from "@/components/Team/TeamPlayers";
+import TeamStatistics from "@/components/Team/TeamStatistics";
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { setTransfers, setPlayers, setCoach, setStatistics } from "@/app/store/slices/teamSlice"
 import { transfers, players, coach, statistics, team } from "@/models/team"
 
 export default function TeamPage({ params }: { params: Promise<{ id: string }> }) {
 
-    const [team, setTeam] = React.useState(null);
+    const [teamData, setTeamData] = React.useState(null);
     const [tab, setTab] = React.useState(0);
     const dispatch = useAppDispatch();
 
@@ -28,9 +29,9 @@ export default function TeamPage({ params }: { params: Promise<{ id: string }> }
             // if (!res.ok) throw new Error("Failed to fetch");
             // const data = await res.json();
             // console.log(data)
-            // setTeam(data[0])
+            // setTeamData(data[0])
 
-            setTeam(team)
+            setTeamData(team)
 
             // getTransfer
             // const res = await fetch(`/api/transfers?teamId=${temp.team.id}`);
@@ -99,11 +100,13 @@ export default function TeamPage({ params }: { params: Promise<{ id: string }> }
                 <Box>
                     <Tabs value={tab} onChange={handleChange}>
                         <Tab label="Players" sx={{ color: 'white' }} />
+                        <Tab label="Statistics" sx={{ color: 'white' }} />
                     </Tabs>
                 </Box>
             </Grid>
             <Grid size={12}>
                 {tab == 0 && <TeamPlayers />}
+                {tab == 1 && <TeamStatistics />}
             </Grid>
         </Grid>
     )

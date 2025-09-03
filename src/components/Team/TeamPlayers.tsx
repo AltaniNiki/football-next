@@ -5,12 +5,14 @@ import BasicTable from "../BaseTable";
 import Grid from "@mui/material/Grid";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import { useRouter } from "next/navigation";
 
 
 export default function TeamPlayers() {
 
     const players = useAppSelector((state) => state.team.players)
     const coach = useAppSelector((state) => state.team.coach)
+    const router = useRouter();
 
     const headers = [
         {
@@ -43,6 +45,11 @@ export default function TeamPlayers() {
         }
     ]
 
+    const onSelectPlayer = (id) => {
+        console.log('playerId--->', id)
+        router.push(`/player/${id}`)
+    }
+
     return (
         <Box>
             <Grid container>
@@ -68,7 +75,7 @@ export default function TeamPlayers() {
                     {players.length > 0 && (
                         <BasicTable headers={headers} data={players} supportPagination={false} rowKey="id" columnSlots={{
                             player: ({ row }) => (
-                                <div style={{ display: "flex", alignItems: "center", gap: 8 }} >
+                                <div style={{ display: "flex", alignItems: "center", gap: 8 }} onClick={() => onSelectPlayer(row.id)}>
                                     <img
                                         src={row.photo}
                                         alt={row.name}

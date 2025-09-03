@@ -10,4 +10,8 @@ export async function getSquads(teamId: string) {
     return data.response;
 }
 
+export async function getProfile(playerid: string) {
+    const { data } = await apiClient.get(`/players/profiles?player=${playerid}`);
+    return data.response;
+}
 

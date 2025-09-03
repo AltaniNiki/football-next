@@ -35,6 +35,6 @@ export default function TeamCard({ name, national, logo, venue, venueCapacity }:
                     </Grid>
                 </Grid>
             </Grid>
-        </Box>
+        </Box >
     )
 }

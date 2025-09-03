@@ -23,7 +23,6 @@ export default function PlayerPage({ params }: { params: Promise<{ id: string }>
         // setPlayer(data)
 
         // console.log("profile --->", data);
-        console.log('prf--->', profile[0].player)
         setPlayer(profile[0].player)
 
     }

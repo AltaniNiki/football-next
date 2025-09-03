@@ -62,7 +62,7 @@ export type PlayerProfileItem = {
     name: String,
     firstname: String,
     lastname: String,
-    age: Number,
+    age: String,
     nationality: String,
     height: String,
     weight: String,

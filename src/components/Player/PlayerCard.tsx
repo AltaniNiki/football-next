@@ -7,7 +7,7 @@ import Avatar from "@mui/material/Avatar";
 type PlayerCardProps = {
     name: String,
     photo: String,
-    age: Number,
+    age: String,
     nationality: String,
     birth: String,
     height: String,

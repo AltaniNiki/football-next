@@ -8,7 +8,7 @@ type PlayerCardProps = {
     name: String,
     photo: String,
     age: Number,
-    nationlity: String,
+    nationality: String,
     birth: String,
     height: String,
     weight: String,

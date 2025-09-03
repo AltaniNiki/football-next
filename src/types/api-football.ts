@@ -1,3 +1,5 @@
+// league types
+
 export type LeagueInfo = {
     id: number;
     name: string;
@@ -41,4 +43,31 @@ export type LeagueItem = {
     league: LeagueInfo,
     country: CountryInfo,
     season: Array<SeasonInfo>
+}
+
+
+// player types
+export type PlayerItem = {
+    id: Number,
+    name: String,
+    age: Number,
+    number: Number,
+    position: String,
+    photo: String
+}
+
+
+export type PlayerProfileItem = {
+    id: Number,
+    name: String,
+    firstname: String,
+    lastname: String,
+    age: Number,
+    nationality: String,
+    height: String,
+    weight: String,
+    number: Number,
+    position: String,
+    photo: String,
+    birth: any
 }

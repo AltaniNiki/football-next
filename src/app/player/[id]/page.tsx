@@ -3,6 +3,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import PlayerCard from "@/components/Player/PlayerCard";
+import type { PlayerProfileItem } from "@/types/api-football";
 import { profile } from "@/models/player"
 
 
@@ -11,7 +12,7 @@ export default function PlayerPage({ params }: { params: Promise<{ id: string }>
 
 
     const { id } = React.use(params);
-    const [player, setPlayer] = React.useState(null);
+    const [player, setPlayer] = React.useState<PlayerProfileItem | null>(null)
 
     const fetchData = async () => {
         // fetch player

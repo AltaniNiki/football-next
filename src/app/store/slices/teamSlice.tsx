@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type TeamState = { transfers: object, players: Array<object>, coach: object };
-const initialState: TeamState = { transfers: {}, players: [], coach: {} };
+type TeamState = { transfers: object, players: Array<object>, coach: object, statistics: object };
+const initialState: TeamState = { transfers: {}, players: [], coach: {}, statistics: {} };
 
 const teamSlice = createSlice({
     name: 'team',
@@ -15,9 +15,12 @@ const teamSlice = createSlice({
         },
         setCoach(state, action: PayloadAction<object>) {
             state.coach = action.payload
+        },
+        setStatistics(state, action: PayloadAction<object>) {
+            state.statistics = action.payload
         }
     },
 });
 
-export const { setTransfers, setPlayers, setCoach } = teamSlice.actions;
+export const { setTransfers, setPlayers, setCoach, setStatistics } = teamSlice.actions;
 export default teamSlice.reducer;

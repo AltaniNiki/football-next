@@ -19,3 +19,8 @@ export async function getCoach(id: string) {
 }
 
 
+export async function getStatistics(leagueId: string, season: string, teamId: string) {
+
+    const { data } = await apiClient.get(`/teams/statistics?league=${leagueId}&season=${season}&team=${teamId}`);
+    return data.response
+}

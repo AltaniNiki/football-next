@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import leagueReducer from "./slices/leagueSlice"
 import teamReducer from "./slices/teamSlice"
+import playerReducer from "./slices/playerSlice"
 
 export const makeStore = () =>
     configureStore({
         reducer: {
             league: leagueReducer,
-            team: teamReducer
+            team: teamReducer,
+            player: playerReducer
         },
         // middleware: (gDM) => gDM(), // αν χρειαστεί να προσθέσεις άλλα
         devTools: process.env.NODE_ENV !== 'production',

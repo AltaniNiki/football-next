@@ -15,3 +15,7 @@ export async function getProfile(playerid: string) {
     return data.response;
 }
 
+export async function getStatistics(playerName: string) {
+    const { data } = await apiClient.get(`/players?search=${playerName}`)
+    return data.response
+}

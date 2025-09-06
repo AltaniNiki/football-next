@@ -21,6 +21,7 @@ export default function TeamPage({ params }: { params: Promise<{ id: string }> }
     const { id } = React.use(params);
 
     const league = useAppSelector((state) => state.league.league)
+    const season = useAppSelector((state) => state.league.season)
 
     const fetchData = async () => {
         try {
@@ -65,7 +66,7 @@ export default function TeamPage({ params }: { params: Promise<{ id: string }> }
 
 
             // get statistics
-            // const resStatistics = await fetch(`/api/team/statistics?league=${league.league.id}&season=${2023}&teamId=${temp.team.id}`);
+            // const resStatistics = await fetch(`/api/team/statistics?league=${league.league.id}&season=${season}&teamId=${temp.team.id}`);
             // if (!resStatistics.ok) throw new Error("Failed to fetch");
             // const statistics = await resStatistics.json();
             // console.log('statistics--->', statistics)

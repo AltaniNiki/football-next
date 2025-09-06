@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type LeagueState = { league: object, standing: object, matches: Array<object>, topScorers: Array<object> };
+type LeagueState = { league: object, standing: object, matches: Array<object>, topScorers: Array<object>, season: "2023" };
 const initialState: LeagueState = { league: {}, standing: {}, matches: [], topScorers: [] };
 
 const leagueSlice = createSlice({

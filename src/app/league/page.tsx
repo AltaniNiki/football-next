@@ -20,6 +20,7 @@ export default function LeaguePage({ }) {
     const dispatch = useAppDispatch();
 
     const league = useAppSelector((state) => state.league.league) as LeagueItem;
+    const season = useAppSelector((state) => state.league.season)
 
     const [tab, setTab] = React.useState(0);
 
@@ -30,7 +31,7 @@ export default function LeaguePage({ }) {
     const fetchData = async () => {
 
         // league standing
-        // const res = await fetch(`/api/standing?league=${league?.league?.id}&season=2023`);
+        // const res = await fetch(`/api/standing?league=${league?.league?.id}&season=${season}`);
         // if (!res.ok) throw new Error("Failed to fetch");
         // const data = await res.json();
         // console.log("standing--->", data);
@@ -44,7 +45,7 @@ export default function LeaguePage({ }) {
         // }
 
         // league matches
-        // const matches = await fetch(`/api/matches?league=${league?.league?.id}&season=2023`);
+        // const matches = await fetch(`/api/matches?league=${league?.league?.id}&season=${season}`);
         // if (!matches.ok) throw new Error("Failed to fetch");
         // const m = await matches.json();
         // console.log('matches ----->', m)
@@ -56,7 +57,7 @@ export default function LeaguePage({ }) {
         dispatch(setMatches(tempMatch))
 
         // league topScores
-        // const respTop = await fetch(`/api/players/top-scorers?league=${league?.league?.id}&season=2023`);
+        // const respTop = await fetch(`/api/players/top-scorers?league=${league?.league?.id}&season=${season}`);
         // if (!respTop.ok) throw new Error("Failed to fetch");
         // const topScorers = await respTop.json();
         // console.log('topScorers ----->', topScorers)

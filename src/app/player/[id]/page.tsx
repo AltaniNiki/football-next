@@ -6,10 +6,11 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import PlayerCard from "@/components/Player/PlayerCard";
 import PlayerTransfers from "@/components/Player/PlayerTransfers";
+import PlayerStatistics from "@/components/Player/PlayterStatistics";
 import { setTransfers, setStatistcs } from "@/app/store/slices/playerSlice"
-import { useAppDispatch } from '@/app/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
 import type { PlayerProfileItem } from "@/types/api-football";
-import { profile, transfers } from "@/models/player"
+import { profile, transfers, statistics } from "@/models/player"
 
 
 
@@ -19,6 +20,8 @@ export default function PlayerPage({ params }: { params: Promise<{ id: string }>
     const { id } = React.use(params);
     const [player, setPlayer] = React.useState<PlayerProfileItem | null>(null)
     const [tab, setTab] = React.useState(0)
+
+    const season = useAppSelector((state) => state.league.season)
 
     const fetchData = async () => {
         // fetch player
@@ -42,11 +45,12 @@ export default function PlayerPage({ params }: { params: Promise<{ id: string }>
 
 
         // fetch statistic
-        // const resStat = await fetch(`/api/players/statistics?playerId=${id}`);
+        // const resStat = await fetch(`/api/players/statistics?playerId=${id}&season=${season}`);
         // if (!resStat.ok) throw new Error("Failed to fetch");
         // const dataStatistics = await resStat.json();
-        // console.log('transfers -->',dataStatistics)
-        // setStatistcs(dataStatistics)
+        // console.log('statistics -->', dataStatistics)
+        // dispatch(setStatistcs(dataStatistics[0].statistics[0]))
+        dispatch(setStatistcs(statistics))
     }
 
 
@@ -54,7 +58,9 @@ export default function PlayerPage({ params }: { params: Promise<{ id: string }>
         fetchData();
     }, [])
 
-
+    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+        setTab(newValue)
+    }
 
     return (
         <Box>
@@ -74,8 +80,9 @@ export default function PlayerPage({ params }: { params: Promise<{ id: string }>
             <Grid container>
                 <Grid size={12}>
                     <Box>
-                        <Tabs value={tab}>
+                        <Tabs value={tab} onChange={handleChange}>
                             <Tab label="Transfers" sx={{ color: 'white' }} />
+                            <Tab label="Statistics" sx={{ color: 'white' }} />
                         </Tabs>
                     </Box>
                 </Grid>
@@ -83,6 +90,7 @@ export default function PlayerPage({ params }: { params: Promise<{ id: string }>
             <Grid container >
                 <Grid size={12}>
                     {tab == 0 && <PlayerTransfers />}
+                    {tab == 1 && <PlayerStatistics />}
                 </Grid>
             </Grid>
         </Box>

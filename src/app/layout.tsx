@@ -42,8 +42,8 @@ export default function RootLayout({
             <ReduxProvider>
               <CssBaseline />
               <BaseApp></BaseApp>
-              <Container style={{ marginTop: '64px' }}>
-                <Grid container>
+              <Container style={{ marginTop: '75px' }}>
+                <Grid container spacing={2}>
                   <Grid size={4}>
                     <LeagueList />
                   </Grid>

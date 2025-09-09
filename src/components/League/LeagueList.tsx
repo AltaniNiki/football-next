@@ -9,7 +9,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemButton from "@mui/material/ListItemButton";
 import style from './LeagueList.module.css'
-import { useAppSelector, useAppDispatch } from '../../app/store/hooks';
+import { useAppDispatch } from '../../app/store/hooks';
 import { setLeague } from "../../app/store/slices/leagueSlice"
 import { list } from "@/models/league";
 import { LeagueItem } from "@/types/api-football"
@@ -19,6 +19,7 @@ export default function LeagueList() {
     const router = useRouter();
 
     const [leagueList, setLeagueList] = React.useState<LeagueItem[]>(list)
+    const [selected, setSelected] = React.useState<number | null>(null)
 
     const leagues = React.useMemo(() => {
         return leagueList.filter((l) => {
@@ -48,27 +49,38 @@ export default function LeagueList() {
 
 
     const onSelectLeague = (data: object) => {
-        console.log('on select league ', data)
         dispatch(setLeague(data))
+        setSelected(data.league.id)
         router.push(`/league`)
     }
 
     return (
-        <Box sx={{ backgroundColor: '#00141D', borderRadius: '10px', padding: '10px' }}>
-            <Box component="section" sx={{ borderBottom: '1px', borderBottomColor: "white" }}>
-                <span className={style.leagueTitle}>Leagues</span>
-            </Box>
-            <List>
+        <Box sx={{ backgroundColor: '#15181A', borderRadius: '10px', padding: '10px' }}>
+            <Box component="section" sx={{
+                borderBottom: '2px solid white', textAlign: 'center'
+            }}>
+                <span className={style.leagueTitle
+                } > Leagues</span>
+            </Box >
+            <List sx={{ height: 'calc(100vh - 220px)', overflow: 'auto' }} component="nav">
                 {
                     leagues.map(l => (
-                        <ListItem key={l.league.id} className={style.leagueListItem}>
-                            <ListItemButton onClick={() => onSelectLeague(l)}>
+                        <ListItem key={l.league.id} className={style.leagueListItem} >
+                            <ListItemButton onClick={() => onSelectLeague(l)} selected={l.league.id == selected} sx={{
+                                '&.Mui-selected': {
+                                    backgroundColor: '#4e4e4e',     // μπλε default
+                                    color: 'white',
+                                    borderRadius: '8px'
+                                },
+
+                            }}>
+                                {/* {l.league.id} - {selected} */}
                                 <ListItemIcon style={{ marginRight: '5px' }}>
                                     <Avatar variant="square" src={l.league.logo} sx={{ bgcolor: "white", width: 34, height: 34, padding: '5px' }} >
-                                        {l.league.name}
+                                        <span >{l.league.name}</span>
                                     </Avatar>
                                 </ListItemIcon>
-                                <ListItemText >
+                                <ListItemText sx={{ '& .MuiTypography-root': { fontFamily: 'var(--font-ubuntu-mono), monospace', fontWeight: '700', fontSize: '16px' } }} >
                                     <span style={{ fontSize: '14px' }}>
                                         {l.league.name}
                                     </span>
@@ -78,7 +90,7 @@ export default function LeagueList() {
                     ))
                 }
             </List>
-        </Box>
+        </Box >
     )
 }
 

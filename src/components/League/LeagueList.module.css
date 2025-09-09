@@ -1,9 +1,9 @@
 .leagueListItem {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border-bottom: 1px solid white;
+    font-family: var(--font-ubuntu-mono), monospace !important;
+    border-bottom: 1px solid  #37383a;
 }
 
 .leagueTitle {
     font-size: 24px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--font-ubuntu-mono), monospace !important;;
 }

@@ -2,12 +2,13 @@ import * as React from "react";
 import BaseTable from "../BaseTable"
 import Box from "@mui/material/Box";
 import { useAppSelector } from "@/app/store/hooks";
+import { formatMatchDate } from "@/utils/dates"
 
 
 export default function LeagueMatches() {
 
     const matches = useAppSelector((state) => state.league.matches)
- 
+
 
 
     const headers = [{
@@ -54,7 +55,7 @@ export default function LeagueMatches() {
                         <span>{row.league.round}</span>
                     ),
                     date: ({ row }) => (
-                        <span>{row.fixture.date}</span>
+                        <span>{formatMatchDate(row.fixture.date)}</span>
                     ),
                     match: ({ row }) => (
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'start' }}>

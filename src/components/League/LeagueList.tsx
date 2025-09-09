@@ -72,7 +72,6 @@ export default function LeagueList() {
                                     color: 'white',
                                     borderRadius: '8px'
                                 },
-
                             }}>
                                 {/* {l.league.id} - {selected} */}
                                 <ListItemIcon style={{ marginRight: '5px' }}>

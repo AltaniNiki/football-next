@@ -43,12 +43,16 @@ export default function BasicTable<T extends Record<string, any>>({ headers, dat
     const optionsList = [5, 10, 30, 50]
     return (
         <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 500 }} aria-label="basic-table">
+            <Table sx={{
+                minWidth: 500, '& td, & th': {
+                    fontFamily: 'var(--font-ubuntu-mono), monospace',
+                },
+            }} aria-label="basic-table">
                 <TableHead>
                     <TableRow>
                         {headers.map((h: HeaderProps) => {
                             return (
-                                <TableCell key={h.key}>
+                                <TableCell key={h.key} sx={{ fontSize: '16px', fontWeight: '700' }}>
                                     {h.title}
                                 </TableCell>
                             )

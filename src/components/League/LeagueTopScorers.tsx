@@ -2,6 +2,8 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import BasicTable from "../BaseTable";
 import { useAppSelector } from "@/app/store/hooks";
+import { useRouter } from "next/navigation";
+
 
 
 export default function LeagueTopScorers() {
@@ -32,6 +34,12 @@ export default function LeagueTopScorers() {
         }
     ]
 
+    const router = useRouter();
+
+    const onSelectPlayer = (id: number) => {
+        router.push(`/player/${id}`)
+    }
+
     return (
         <Box>
             <BasicTable
@@ -40,7 +48,7 @@ export default function LeagueTopScorers() {
                 supportPagination={false}
                 columnSlots={{
                     player: ({ row }) => (
-                        <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '5px' }}>
+                        <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '5px', cursor: 'pointer' }} onClick={() => onSelectPlayer(row.player.id)}>
                             <img
                                 src={row.player.photo}
                                 alt={row.player.name}

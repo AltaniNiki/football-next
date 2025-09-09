@@ -11,9 +11,6 @@ import LeagueTopScorers from "@/components/League/LeagueTopScorers";
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { setStanding, setMatches, setTopScorers } from "@/app/store/slices/leagueSlice";
 import { standing, match, topScorers } from "@/models/league"
-import type { LeagueItem } from "@/types/api-football"
-
-
 
 
 export default function LeaguePage({ }) {
@@ -86,19 +83,39 @@ export default function LeaguePage({ }) {
                 />
             </Grid>
             <Grid size={12} sx={{ marginLeft: '5px' }}>
-                <Box>
-                    <Tabs value={tab} onChange={handleChange} aria-label="basic tabs league" >
-                        <Tab label="Standing" sx={{ color: 'white' }} />
-                        <Tab label="Matches" sx={{ color: 'white' }} />
-                        {/* <Tab label="History" sx={{ color: 'white' }} /> */}
-                        <Tab label="Top Scorers" sx={{ color: 'white' }} />
-                    </Tabs>
+                <Box sx={{ backgroundColor: '#15181A', paddingLeft: '15px', paddingRight: '15px', borderRadius: '10px' }}>
+                    <Grid container>
+                        <Grid>
+                            <Tabs value={tab} onChange={handleChange} aria-label="basic tabs league" sx={{
+                                "& .MuiTab-root": {
+                                    color: "white",           // default text
+                                    fontWeight: 500,
+                                    textTransform: 'capitalize',
+                                    fontFamily: 'var(--font-ubuntu-mono), monospace',
+
+                                },
+                                "& .Mui-selected": {// selected tab text
+                                    color: "white",
+                                    fontWeight: 700,
+                                },
+                                "& .MuiTabs-indicator": {
+                                    marginBottom: '5px',
+                                    backgroundColor: "white", // κάτω γραμμή indicator
+                                },
+                            }}>
+                                <Tab label="Standing" sx={{ color: 'white' }} />
+                                <Tab label="Matches" sx={{ color: 'white' }} />
+                                {/* <Tab label="History" sx={{ color: 'white' }} /> */}
+                                <Tab label="Top Scorers" sx={{ color: 'white' }} />
+                            </Tabs>
+                        </Grid>
+                        <Grid size={12} sx={{ marginLeft: '5px' }}>
+                            {tab == 0 && (<LeagueStanding />)}
+                            {tab == 1 && (<LeagueMatches />)}
+                            {tab == 2 && (<LeagueTopScorers />)}
+                        </Grid>
+                    </Grid>
                 </Box>
-            </Grid>
-            <Grid size={12} sx={{ marginLeft: '5px' }}>
-                {tab == 0 && (<LeagueStanding />)}
-                {tab == 1 && (<LeagueMatches />)}
-                {tab == 2 && (<LeagueTopScorers />)}
             </Grid>
         </Grid>
     )

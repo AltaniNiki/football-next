@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 
 
 
+
 export default function LeagueStanding() {
 
     const headers = [{
@@ -66,7 +67,6 @@ export default function LeagueStanding() {
 
     const standing = useAppSelector((state) => state.league.standing)
     const onSelectTeam = (row: object) => {
-        console.log('team--->', row)
         router.push(`/team/${row.id}`)
     }
 
@@ -74,7 +74,7 @@ export default function LeagueStanding() {
         <Box>
             {standing.length > 0 && (<BaseTable headers={headers} data={standing} supportPagination={false} rowKey="rank" columnSlots={{
                 team: ({ row }) => (
-                    <div style={{ display: "flex", alignItems: "center", gap: 8 }} onClick={() => onSelectTeam(row.team)}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, cursor: 'pointer' }} onClick={() => onSelectTeam(row.team)}>
                         <img
                             src={row.team.logo}
                             alt={row.team.name}

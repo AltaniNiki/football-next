@@ -5,6 +5,7 @@ import BasicTable from "../BaseTable";
 import Grid from "@mui/material/Grid";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import Typography from "@mui/material/Typography";
 import { useRouter } from "next/navigation";
 
 
@@ -45,8 +46,7 @@ export default function TeamPlayers() {
         }
     ]
 
-    const onSelectPlayer = (id) => {
-        console.log('playerId--->', id)
+    const onSelectPlayer = (id: number) => {
         router.push(`/player/${id}`)
     }
 
@@ -55,19 +55,23 @@ export default function TeamPlayers() {
             <Grid container>
                 <Grid size={12} sx={{ marginBottom: '5px' }}>
                     <Card>
-                        <CardContent>
-                            <span>Coach:</span>
-                            <strong >
+                        <CardContent sx={{ paddingBottom: 0 }}>
+                            <Grid sx={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                justifyContent: 'center',
+                                alignItems: 'center'
+                            }}>
+                                <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px' }}>Coach:</Typography>
                                 <img
-                                    src={coach.photo}
-                                    alt={coach.name}
+                                    src={coach?.photo}
+                                    alt={coach?.name}
                                     width={20}
                                     height={20}
                                     style={{ objectFit: "contain" }}
                                 />
-                                <span>{coach?.name}</span>
-                            </strong>
-
+                                <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', fontWeight: '700' }} >{coach?.name}</Typography>
+                            </Grid>
                         </CardContent>
                     </Card>
                 </Grid>
@@ -75,7 +79,7 @@ export default function TeamPlayers() {
                     {players.length > 0 && (
                         <BasicTable headers={headers} data={players} supportPagination={false} rowKey="id" columnSlots={{
                             player: ({ row }) => (
-                                <div style={{ display: "flex", alignItems: "center", gap: 8 }} onClick={() => onSelectPlayer(row.id)}>
+                                <div style={{ display: "flex", alignItems: "center", gap: 8, cursor: 'pointer' }} onClick={() => onSelectPlayer(row.id)}>
                                     <img
                                         src={row.photo}
                                         alt={row.name}

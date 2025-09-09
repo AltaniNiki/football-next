@@ -89,7 +89,7 @@ export default function TeamPage({ params }: { params: Promise<{ id: string }> }
     }
 
     return (
-        <Grid container sx={{ marginTop: '5px', marginLeft: '5px' }}>
+        <Grid container spacing={3}>
             <Grid size={12}>
                 {![null, undefined].includes(team) && (<TeamCard
                     name={team?.team?.name}
@@ -99,17 +99,37 @@ export default function TeamPage({ params }: { params: Promise<{ id: string }> }
                     venueCapacity={team?.venue?.capacity} />)}
             </Grid>
             <Grid size={12}>
-                <Box>
-                    <Tabs value={tab} onChange={handleChange}>
-                        <Tab label="Players" sx={{ color: 'white' }} />
-                        <Tab label="Statistics" sx={{ color: 'white' }} />
-                    </Tabs>
+                <Box sx={{ backgroundColor: '#15181A', paddingLeft: '15px', paddingRight: '15px', borderRadius: '10px' }}>
+                    <Grid container>
+                        <Grid size={12}>
+                            <Tabs value={tab} onChange={handleChange} sx={{
+                                "& .MuiTab-root": {
+                                    color: "white",           // default text
+                                    fontWeight: 500,
+                                    textTransform: 'capitalize',
+                                    fontFamily: 'var(--font-ubuntu-mono), monospace',
+
+                                },
+                                "& .Mui-selected": {// selected tab text
+                                    color: "white",
+                                    fontWeight: 700,
+                                },
+                                "& .MuiTabs-indicator": {
+                                    marginBottom: '5px',
+                                    backgroundColor: "white", // κάτω γραμμή indicator
+                                },
+                            }}>
+                                <Tab label="Players" sx={{ color: 'white' }} />
+                                <Tab label="Statistics" sx={{ color: 'white' }} />
+                            </Tabs>
+                        </Grid>
+                        <Grid size={12}>
+                            {tab == 0 && <TeamPlayers />}
+                            {tab == 1 && <TeamStatistics />}
+                        </Grid>
+                    </Grid>
                 </Box>
-            </Grid>
-            <Grid size={12}>
-                {tab == 0 && <TeamPlayers />}
-                {tab == 1 && <TeamStatistics />}
-            </Grid>
-        </Grid>
+            </Grid >
+        </Grid >
     )
 } 

@@ -45,6 +45,53 @@ export type LeagueItem = {
     seasons: Array<SeasonInfo>
 }
 
+// standing
+
+export type StandingItem = {
+    rank: number,
+    team: {
+        id: number,
+        name: string,
+        logo: string
+    },
+    points: string,
+    goalsDiff: string,
+    group: string,
+    form: string,
+    status: string,
+    description: string,
+    all: {
+        played: number | null,
+        win: number,
+        draw: number,
+        lose: number,
+        goals: {
+            for: number,
+            against: number
+        }
+    },
+    home: {
+        played: number | null,
+        win: number,
+        draw: number,
+        lose: number,
+        goals: {
+            for: number,
+            against: number
+        }
+    },
+    away: {
+        played: number | null,
+        win: number,
+        draw: number,
+        lose: number,
+        goals: {
+            for: number,
+            against: number
+        }
+    },
+    update: string
+}
 
 // player types
 export type PlayerItem = {

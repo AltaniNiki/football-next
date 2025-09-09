@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import type { CoachItem, TeamStatistics } from '@/types/api-football'
 
-type TeamState = { transfers: object, players: Array<object>, coach: object, statistics: object };
-const initialState: TeamState = { transfers: {}, players: [], coach: {}, statistics: {} };
+type TeamState = { transfers: object, players: Array<object>, coach: CoachItem | null, statistics: TeamStatistics | null };
+const initialState: TeamState = { transfers: {}, players: [], coach: null, statistics: null };
 
 const teamSlice = createSlice({
     name: 'team',
@@ -13,10 +14,10 @@ const teamSlice = createSlice({
         setPlayers(state, action: PayloadAction<Array<object>>) {
             state.players = action.payload
         },
-        setCoach(state, action: PayloadAction<object>) {
+        setCoach(state, action: PayloadAction<CoachItem>) {
             state.coach = action.payload
         },
-        setStatistics(state, action: PayloadAction<object>) {
+        setStatistics(state, action: PayloadAction<TeamStatistics>) {
             state.statistics = action.payload
         }
     },

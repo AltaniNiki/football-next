@@ -29,7 +29,6 @@ export default function LeagueCard({ name, logo, country, flag }: LeagueCardProp
                         <Grid size={12} sx={{ display: 'flex', flexDirection: 'row', alignItems: "center" }}>
                             <Avatar src={flag} sx={{ width: '34px', height: '34px', marginRight: '5px' }} />
                             <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px' }}>{country}</Typography>
-
                         </Grid>
                     </Grid>
                 </Grid>

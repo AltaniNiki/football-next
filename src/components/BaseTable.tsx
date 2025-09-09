@@ -42,7 +42,7 @@ type BasicTableProps<T extends Record<string, any>> = {
 export default function BasicTable<T extends Record<string, any>>({ headers, data, page, perPage, supportPagination, rowKey, onPageChange, onRowsPerPageChange, columnSlots = {}, }: BasicTableProps<Τ>) {
     const optionsList = [5, 10, 30, 50]
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} style={{ maxHeight: 'calc(100vh - 350px)' }}>
             <Table sx={{
                 minWidth: 500, '& td, & th': {
                     fontFamily: 'var(--font-ubuntu-mono), monospace',

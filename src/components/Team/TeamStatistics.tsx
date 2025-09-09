@@ -10,12 +10,20 @@ import { useAppSelector, useAppDispatch } from "@/app/store/hooks";
 
 export default function TeamStatistics() {
 
+    type statisticType = {
+        column1: string | null | number,
+        column2: string | null | number,
+        column3: string | null | number,
+        column4: string | null | number,
+        style: string | null | number
+    }
+
     const statistics = useAppSelector((state) => state.team.statistics)
 
-    const [data, setData] = React.useState([]);
+    const [data, setData] = React.useState<statisticType[]>([]);
 
     React.useEffect(() => {
-        var result = transformStatistics(statistics)
+        var result: statisticType[] = transformStatistics(statistics)
         setData(result)
     }, [])
 

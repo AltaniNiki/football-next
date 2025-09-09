@@ -19,10 +19,10 @@ import type { LeagueItem } from "@/types/api-football"
 export default function LeaguePage({ }) {
     const dispatch = useAppDispatch();
 
-    const league = useAppSelector((state) => state.league.league) as LeagueItem;
+    const league = useAppSelector((state) => state.league.league)
     const season = useAppSelector((state) => state.league.season)
 
-    const [tab, setTab] = React.useState(0);
+    const [tab, setTab] = React.useState<number>(0);
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setTab(newValue)

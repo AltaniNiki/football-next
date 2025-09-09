@@ -12,12 +12,13 @@ import style from './LeagueList.module.css'
 import { useAppSelector, useAppDispatch } from '../../app/store/hooks';
 import { setLeague } from "../../app/store/slices/leagueSlice"
 import { list } from "@/models/league";
+import { LeagueItem } from "@/types/api-football"
 
 
 export default function LeagueList() {
     const router = useRouter();
 
-    const [leagueList, setLeagueList] = React.useState(list)
+    const [leagueList, setLeagueList] = React.useState<LeagueItem[]>(list)
 
     const leagues = React.useMemo(() => {
         return leagueList.filter((l) => {

@@ -19,7 +19,7 @@ export default function PlayerPage({ params }: { params: Promise<{ id: string }>
     const dispatch = useAppDispatch();
     const { id } = React.use(params);
     const [player, setPlayer] = React.useState<PlayerProfileItem | null>(null)
-    const [tab, setTab] = React.useState(0)
+    const [tab, setTab] = React.useState<number>(0)
 
     const season = useAppSelector((state) => state.league.season)
 

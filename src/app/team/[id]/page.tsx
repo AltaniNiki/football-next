@@ -11,11 +11,12 @@ import TeamStatistics from "@/components/Team/TeamStatistics";
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { setTransfers, setPlayers, setCoach, setStatistics } from "@/app/store/slices/teamSlice"
 import { transfers, players, coach, statistics, team } from "@/models/team"
+import type { TeamListItem } from "@/types/api-football"
 
 export default function TeamPage({ params }: { params: Promise<{ id: string }> }) {
 
-    const [teamData, setTeamData] = React.useState(null);
-    const [tab, setTab] = React.useState(0);
+    const [teamData, setTeamData] = React.useState<TeamListItem | null>(null);
+    const [tab, setTab] = React.useState<number>(0);
     const dispatch = useAppDispatch();
 
     const { id } = React.use(params);

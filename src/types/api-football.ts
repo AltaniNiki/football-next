@@ -42,7 +42,7 @@ export type SeasonInfo = {
 export type LeagueItem = {
     league: LeagueInfo,
     country: CountryInfo,
-    season: Array<SeasonInfo>
+    seasons: Array<SeasonInfo>
 }
 
 

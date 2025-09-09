@@ -6,5 +6,3 @@ export async function getLeagues(): Promise<LeagueItem[]> {
 
     return data.response as LeagueItem[];
 }
-
-// export async function getStanding():

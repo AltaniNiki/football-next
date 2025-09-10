@@ -99,6 +99,7 @@ export default function LeaguePage({ }) {
                                     fontWeight: 700,
                                 },
                                 "& .MuiTabs-indicator": {
+                                    color: "white",
                                     marginBottom: '5px',
                                     backgroundColor: "white", // κάτω γραμμή indicator
                                 },

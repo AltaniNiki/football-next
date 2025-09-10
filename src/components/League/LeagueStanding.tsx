@@ -72,7 +72,7 @@ export default function LeagueStanding() {
 
     return (
         <Box>
-            {standing.length > 0 && (<BaseTable headers={headers} data={standing} supportPagination={false} rowKey="rank" columnSlots={{
+            {standing != null && standing.length > 0 && (<BaseTable headers={headers} data={standing} supportPagination={false} rowKey="rank" columnSlots={{
                 team: ({ row }) => (
                     <div style={{ display: "flex", alignItems: "center", gap: 8, cursor: 'pointer' }} onClick={() => onSelectTeam(row.team)}>
                         <img

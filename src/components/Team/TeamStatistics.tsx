@@ -2,9 +2,11 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Card from '@mui/material/Card';
+import Typography from "@mui/material/Typography";
 import CardContent from '@mui/material/CardContent';
 import { transformStatistics } from "@/utils/team"
 import { useAppSelector, useAppDispatch } from "@/app/store/hooks";
+import styles from "@/components/Team/TeamStatistics.module.css"
 
 
 
@@ -33,18 +35,38 @@ export default function TeamStatistics() {
             <Card>
                 <CardContent>
                     {data.map((row: any, index: number) => {
-                        return (<Grid container>
+                        return (<Grid container rowSpacing={1} className={row.style != null ? styles[row.style] : ''} sx={{ borderBottom: '1px solid #E4E8ED' }}>
                             <Grid size={3}>
-                                <span>{row.column1}</span>
+                                <Typography
+                                    sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '14px' }}
+                                    className={row.cellStyle != null ? styles[row.cellStyle] : ''}
+                                >
+                                    {row.column1}
+                                </Typography>
                             </Grid>
                             <Grid size={3}>
-                                <span>{row.column2}</span>
+                                <Typography
+                                    sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '14px' }}
+                                    className={row.cellStyle != null ? styles[row.cellStyle] : ''}
+                                >
+                                    {row.column2}
+                                </Typography>
                             </Grid>
                             <Grid size={3}>
-                                <span>{row.column3}</span>
+                                <Typography
+                                    sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '14px' }}
+                                    className={row.cellStyle != null ? styles[row.cellStyle] : ''}
+                                >
+                                    {row.column3}
+                                </Typography>
                             </Grid>
                             <Grid size={3}>
-                                <span>{row.column4}</span>
+                                <Typography
+                                    sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '14px' }}
+                                    className={row.cellStyle != null ? styles[row.cellStyle] : ''}
+                                >
+                                    {row.column4}
+                                </Typography>
                             </Grid>
                         </Grid>)
                     })
@@ -54,6 +76,6 @@ export default function TeamStatistics() {
             </Card>
 
 
-        </Box>
+        </Box >
     )
 }

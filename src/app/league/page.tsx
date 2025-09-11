@@ -88,18 +88,18 @@ export default function LeaguePage({ }) {
                         <Grid>
                             <Tabs value={tab} onChange={handleChange} aria-label="basic tabs league" sx={{
                                 "& .MuiTab-root": {
-                                    color: "white",           // default text
+                                    color: "white !important",           // default text
                                     fontWeight: 500,
                                     textTransform: 'capitalize',
                                     fontFamily: 'var(--font-ubuntu-mono), monospace',
 
                                 },
                                 "& .Mui-selected": {// selected tab text
-                                    color: "white",
+                                    color: "white !important",
                                     fontWeight: 700,
                                 },
                                 "& .MuiTabs-indicator": {
-                                    color: "white",
+                                    color: "white !important",
                                     marginBottom: '5px',
                                     backgroundColor: "white", // κάτω γραμμή indicator
                                 },

@@ -9,8 +9,9 @@ import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
 import PanToolIcon from '@mui/icons-material/PanTool';
 import ViewAgendaIcon from '@mui/icons-material/ViewAgenda';
-import Divider from "@mui/material/Divider";
-
+import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
+import BackHandOutlinedIcon from '@mui/icons-material/BackHandOutlined';
+import Typography from "@mui/material/Typography";
 
 export default function PlayerStatistics() {
 
@@ -24,47 +25,62 @@ export default function PlayerStatistics() {
                     <Card>
                         <CardContent>
                             <Grid container spacing={2}>
-                                <Grid size={{ sm: 12, md: 6, lg: 6 }} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottomColor: 'black', borderBottom: '1px solid' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}> <SportsIcon /> <span style={{ marginLeft: '5px' }}>Appearances</span></div>
+                                <Grid size={{ sm: 12, md: 6, lg: 6 }} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #d3d5d7ff' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center' }}> <SportsIcon />
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', marginLeft: '5px' }}>Appearances</Typography></div>
                                     <div>
-                                        <span>{statistics?.games?.appearences}</span>
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', fontWeight: 600 }}>{statistics?.games?.appearences}</Typography>
                                     </div>
 
                                 </Grid>
 
-                                <Grid size={{ sm: 12, md: 6, lg: 6 }} sx={{ display: 'flex', justifyContent: 'space-between', borderBottomColor: 'black', borderBottom: '1px solid' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}> <SportsSoccerIcon /> <span style={{ marginLeft: '5px' }}>Goals</span></div>
+                                <Grid size={{ sm: 12, md: 6, lg: 6 }} sx={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #d3d5d7ff' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                        <SportsSoccerIcon />
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', marginLeft: '5px' }}>Goals</Typography>
+                                    </div>
                                     <div>
-                                        <span>{statistics?.goals?.total}</span>
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', fontWeight: 600 }}>{statistics?.goals?.total}</Typography>
                                     </div>
                                 </Grid>
                             </Grid>
                             <Grid container spacing={2}>
-                                <Grid size={{ sm: 12, md: 6, lg: 6 }} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottomColor: 'black', borderBottom: '1px solid' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}> <FormatListNumberedIcon /> <span style={{ marginLeft: '5px' }}>Lineups</span></div>
+                                <Grid size={{ sm: 12, md: 6, lg: 6 }} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #d3d5d7ff' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                        <FormatListNumberedIcon />
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', marginLeft: '5px' }} >Lineups</Typography>
+                                    </div>
                                     <div>
-                                        <span>{statistics?.games?.lineups}</span>
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', fontWeight: 600 }}>{statistics?.games?.lineups}</Typography>
                                     </div>
                                 </Grid>
-                                <Grid size={{ sm: 12, md: 6, lg: 6 }} sx={{ display: 'flex', justifyContent: 'space-between', borderBottomColor: 'black', borderBottom: '1px solid' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}> <SportsSoccerIcon color="yellow" /> <span style={{ marginLeft: '5px' }}>Assist</span> </div>
+                                <Grid size={{ sm: 12, md: 6, lg: 6 }} sx={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #d3d5d7ff' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                        <SportsSoccerIcon color="error" />
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', marginLeft: '5px' }}>Assist</Typography> </div>
                                     <div>
-                                        <span>{statistics?.goals?.assists}</span>
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', fontWeight: 600 }}>{statistics?.goals?.assists}</Typography>
                                     </div>
                                 </Grid>
 
                             </Grid>
                             <Grid container spacing={2}>
                                 <Grid size={{ sm: 12, md: 6, lg: 6 }} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}> <FormatListNumberedIcon /> <span style={{ marginLeft: '5px' }}>Minutes</span></div>
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                        <HourglassEmptyIcon color="warning" />
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', marginLeft: '5px' }}>Minutes</Typography>
+                                    </div>
                                     <div>
-                                        <span>{statistics?.games?.minutes}</span>
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', fontWeight: 600 }}>{statistics?.games?.minutes}</Typography>
                                     </div>
                                 </Grid>
                                 <Grid size={{ sm: 12, md: 6, lg: 6 }} sx={{ display: 'flex', justifyContent: 'space-between', }}>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}> <PanToolIcon color="success" /> <span style={{ marginLeft: '5px' }}>Saves</span></div>
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                        <BackHandOutlinedIcon color="success" />
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', marginLeft: '5px' }}>Saves</Typography>
+                                    </div>
                                     <div>
-                                        <span>{statistics?.goals?.saves}</span>
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', fontWeight: 600 }}>{statistics?.goals?.saves}</Typography>
                                     </div>
                                 </Grid>
                             </Grid>
@@ -77,45 +93,63 @@ export default function PlayerStatistics() {
                     <Card>
                         <CardContent>
                             <Grid container spacing={2}>
-                                <Grid size={{ sm: 12, md: 6, lg: 6 }} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottomColor: 'black', borderBottom: '1px solid' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}> <ViewAgendaIcon color="warning" /> <span style={{ marginLeft: '5px' }}>Yellow</span></div>
+                                <Grid size={{ sm: 12, md: 6, lg: 6 }} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #d3d5d7ff' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                        <ViewAgendaIcon color="warning" />
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', marginLeft: '5px' }}>Yellow</Typography>
+                                    </div>
                                     <div>
-                                        <span>{statistics?.cards?.yellow}</span>
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', fontWeight: 600 }}>{statistics?.cards?.yellow}</Typography>
                                     </div>
                                 </Grid>
-                                <Grid size={{ sm: 12, md: 6, lg: 6 }} sx={{ display: 'flex', justifyContent: 'space-between', borderBottomColor: 'black', borderBottom: '1px solid' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}> <SportsSoccerIcon /> <span style={{ marginLeft: '5px' }}>Penalty Scored</span></div>
+                                <Grid size={{ sm: 12, md: 6, lg: 6 }} sx={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #d3d5d7ff' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                        <SportsSoccerIcon />
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', marginLeft: '5px' }}>Penalty Scored</Typography>
+                                    </div>
                                     <div>
-                                        <span>{statistics?.penalty?.scored}</span>
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', fontWeight: 600 }}>{statistics?.penalty?.scored}</Typography>
                                     </div>
                                 </Grid>
                             </Grid>
                             <Grid container spacing={2}>
-                                <Grid size={{ sm: 12, md: 6, lg: 6 }} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottomColor: 'black', borderBottom: '1px solid' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}> <ViewAgendaIcon /> <span style={{ marginLeft: '5px' }}>Yellowred</span></div>
+                                <Grid size={{ sm: 12, md: 6, lg: 6 }} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #d3d5d7ff' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                        <ViewAgendaIcon />
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', marginLeft: '5px' }}>Yellowred</Typography>
+                                    </div>
                                     <div>
-                                        <span>{statistics?.cards?.yellowred}</span>
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', fontWeight: 600 }}>{statistics?.cards?.yellowred}</Typography>
                                     </div>
                                 </Grid>
-                                <Grid size={{ sm: 12, md: 6, lg: 6 }} sx={{ display: 'flex', justifyContent: 'space-between', borderBottomColor: 'black', borderBottom: '1px solid' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}> <SportsSoccerIcon color="yellow" /> <span style={{ marginLeft: '5px' }}>Penalty Missed</span></div>
+                                <Grid size={{ sm: 12, md: 6, lg: 6 }} sx={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #d3d5d7ff' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                        <SportsSoccerIcon color="error" />
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', marginLeft: '5px' }}>Penalty Missed</Typography>
+                                    </div>
                                     <div>
-                                        <span>{statistics?.penalty?.missed}</span>
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', fontWeight: 600 }}>{statistics?.penalty?.missed}</Typography>
                                     </div>
                                 </Grid>
 
                             </Grid>
                             <Grid container spacing={2}>
                                 <Grid size={{ sm: 12, md: 6, lg: 6 }} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}> <ViewAgendaIcon /> <span style={{ marginLeft: '5px' }}>Red</span></div>
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                        <ViewAgendaIcon color="error" />
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', marginLeft: '5px' }}>Red</Typography>
+                                    </div>
                                     <div>
-                                        <span>{statistics?.cards?.red}</span>
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', fontWeight: 600 }}>{statistics?.cards?.red}</Typography>
                                     </div>
                                 </Grid>
                                 <Grid size={{ sm: 12, md: 6, lg: 6 }} sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}> <PanToolIcon color="success" /> <span style={{ marginLeft: '5px' }}>Penalty Saved</span></div>
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                        <BackHandOutlinedIcon color="success" />
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', marginLeft: '5px' }}>Penalty Saved</Typography>
+                                    </div>
                                     <div>
-                                        <span>{statistics?.penalty?.saved}</span>
+                                        <Typography sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '16px', fontWeight: 600 }}>{statistics?.penalty?.saved}</Typography>
                                     </div>
                                 </Grid>
                             </Grid>

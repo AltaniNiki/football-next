@@ -358,7 +358,7 @@ export type TeamStatistics = {
         loses: {
             home: number,
             away: number,
-            tota: number
+            total: number
         }
     },
     goals: {

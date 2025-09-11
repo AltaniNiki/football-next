@@ -104,17 +104,18 @@ export default function TeamPage({ params }: { params: Promise<{ id: string }> }
                         <Grid size={12}>
                             <Tabs value={tab} onChange={handleChange} sx={{
                                 "& .MuiTab-root": {
-                                    color: "white",           // default text
+                                    color: "white !important",           // default text
                                     fontWeight: 500,
                                     textTransform: 'capitalize',
                                     fontFamily: 'var(--font-ubuntu-mono), monospace',
 
                                 },
                                 "& .Mui-selected": {// selected tab text
-                                    color: "white",
+                                    color: "white !important",
                                     fontWeight: 700,
                                 },
                                 "& .MuiTabs-indicator": {
+                                    color: "white !important",
                                     marginBottom: '5px',
                                     backgroundColor: "white", // κάτω γραμμή indicator
                                 },

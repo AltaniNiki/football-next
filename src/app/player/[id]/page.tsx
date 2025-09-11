@@ -63,8 +63,8 @@ export default function PlayerPage({ params }: { params: Promise<{ id: string }>
     }
 
     return (
-        <Box>
-            <Grid>
+        <Grid container spacing={3}>
+            <Grid size={12}>
                 {player != null && (<PlayerCard
                     name={`${player.firstname}  ${player.lastname}`}
                     photo={player.photo}
@@ -77,23 +77,44 @@ export default function PlayerPage({ params }: { params: Promise<{ id: string }>
                 />)
                 }
             </Grid>
-            <Grid container>
-                <Grid size={12}>
-                    <Box>
-                        <Tabs value={tab} onChange={handleChange}>
-                            <Tab label="Transfers" sx={{ color: 'white' }} />
-                            <Tab label="Statistics" sx={{ color: 'white' }} />
-                        </Tabs>
-                    </Box>
-                </Grid>
+            <Grid size={12}>
+                <Box sx={{ backgroundColor: '#15181A', paddingLeft: '15px', paddingRight: '15px', borderRadius: '10px' }}>
+                    <Grid container>
+                        <Grid size={12}>
+                            <Box>
+                                <Tabs value={tab} onChange={handleChange} sx={{
+                                    "& .MuiTab-root": {
+                                        color: "white !important",           // default text
+                                        fontWeight: 500,
+                                        textTransform: 'capitalize',
+                                        fontFamily: 'var(--font-ubuntu-mono), monospace',
+
+                                    },
+                                    "& .Mui-selected": {// selected tab text
+                                        color: "white !important",
+                                        fontWeight: 700,
+                                    },
+                                    "& .MuiTabs-indicator": {
+                                        color: "white !important",
+                                        marginBottom: '5px',
+                                        backgroundColor: "white", // κάτω γραμμή indicator
+                                    },
+                                }}>
+                                    <Tab label="Transfers" sx={{ color: 'white' }} />
+                                    <Tab label="Statistics" sx={{ color: 'white' }} />
+                                </Tabs>
+                            </Box>
+                        </Grid>
+
+                        <Grid size={12}>
+                            {tab == 0 && <PlayerTransfers />}
+                            {tab == 1 && <PlayerStatistics />}
+                        </Grid>
+
+                    </Grid>
+                </Box>
             </Grid>
-            <Grid container >
-                <Grid size={12}>
-                    {tab == 0 && <PlayerTransfers />}
-                    {tab == 1 && <PlayerStatistics />}
-                </Grid>
-            </Grid>
-        </Box>
+        </Grid>
     )
 
 }

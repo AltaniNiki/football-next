@@ -5,6 +5,7 @@ export function transformStatistics(data: TeamStatistics | null) {
 
     // push first headers
     result.push({
+        id: "headers_row",
         column1: " ",
         column2: "Home",
         column3: "Away",
@@ -15,6 +16,7 @@ export function transformStatistics(data: TeamStatistics | null) {
 
     // push game played
     result.push({
+        id: "games_row",
         column1: "Game played",
         column2: data?.fixtures.played.home,
         column3: data?.fixtures.played.away,
@@ -25,6 +27,7 @@ export function transformStatistics(data: TeamStatistics | null) {
 
     // push wins
     result.push({
+        id: "wins_row",
         column1: "Wins",
         column2: data?.fixtures.wins.home,
         column3: data?.fixtures.wins.away,
@@ -35,6 +38,7 @@ export function transformStatistics(data: TeamStatistics | null) {
 
     // push draws
     result.push({
+        id: "draws_row",
         column1: "Draws",
         column2: data?.fixtures.draws.home,
         column3: data?.fixtures.draws.away,
@@ -46,6 +50,7 @@ export function transformStatistics(data: TeamStatistics | null) {
 
     // push loss
     result.push({
+        id: "loses_row",
         column1: "Loses",
         column2: data?.fixtures.loses.home,
         column3: data?.fixtures.loses.away,
@@ -57,6 +62,7 @@ export function transformStatistics(data: TeamStatistics | null) {
     // push goals
 
     result.push({
+        id: "goals_row",
         column1: "Goals",
         column2: "",
         column3: "",
@@ -66,6 +72,7 @@ export function transformStatistics(data: TeamStatistics | null) {
     })
     // push goals for
     result.push({
+        id: "goalsFor_row",
         column1: "Goals for",
         column2: data?.goals.for.total.home,
         column3: data?.goals.for.total.away,
@@ -76,6 +83,7 @@ export function transformStatistics(data: TeamStatistics | null) {
 
     // push goals against
     result.push({
+        id: "goalsAgainst_row",
         column1: "Goals against",
         column2: data?.goals.against.total.home,
         column3: data?.goals.against.total.away,

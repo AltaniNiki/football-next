@@ -6,14 +6,14 @@ import Typography from "@mui/material/Typography";
 
 
 type PlayerCardProps = {
-    name: String,
-    photo: String,
-    age: String,
-    nationality: String,
-    birth: String,
-    height: String,
-    weight: String,
-    position: String
+    name: string,
+    photo: string,
+    age: string,
+    nationality: string,
+    birth: string,
+    height: string,
+    weight: string,
+    position: string
 }
 
 export default function PlayerCard({ name, photo, age, nationality, birth, height, weight, position }: PlayerCardProps) {

@@ -44,10 +44,10 @@ export default function RootLayout({
               <BaseApp></BaseApp>
               <Container style={{ marginTop: '75px' }}>
                 <Grid container spacing={2}>
-                  <Grid size={4}>
+                  <Grid size={{ xs: 12, sm: 12, md: 4, lg: 4 }}>
                     <LeagueList />
                   </Grid>
-                  <Grid size={8}>
+                  <Grid size={{ xs: 12, sm: 12, md: 8, lg: 8 }}>
                     {children}
                   </Grid>
                 </Grid>

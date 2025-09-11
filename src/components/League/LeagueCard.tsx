@@ -7,10 +7,10 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography"
 
 type LeagueCardProps = {
-    name: String;
-    logo: String;
-    country: String;
-    flag: String;
+    name: string | undefined;
+    logo: string | undefined;
+    country: string | undefined;
+    flag: string | undefined;
 };
 
 

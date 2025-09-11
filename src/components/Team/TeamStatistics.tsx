@@ -35,7 +35,7 @@ export default function TeamStatistics() {
             <Card>
                 <CardContent>
                     {data.map((row: any, index: number) => {
-                        return (<Grid container rowSpacing={1} className={row.style != null ? styles[row.style] : ''} sx={{ borderBottom: '1px solid #E4E8ED' }}>
+                        return (<Grid key={row.id} container rowSpacing={1} className={row.style != null ? styles[row.style] : ''} sx={{ borderBottom: '1px solid #E4E8ED' }}>
                             <Grid size={3}>
                                 <Typography
                                     sx={{ fontFamily: "var(--font-ubuntu-mono), monospace", fontSize: '14px' }}

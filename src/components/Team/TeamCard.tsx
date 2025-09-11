@@ -6,11 +6,11 @@ import Typography from "@mui/material/Typography"
 
 
 type TeamCard = {
-    name: String,
-    national: String,
-    logo: String,
-    venue: String,
-    venueCapacity: Number
+    name: string,
+    national: string,
+    logo: string,
+    venue: string,
+    venueCapacity: number
 }
 
 export default function TeamCard({ name, national, logo, venue, venueCapacity }: TeamCard) {

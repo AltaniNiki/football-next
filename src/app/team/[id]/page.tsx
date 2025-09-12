@@ -27,18 +27,19 @@ export default function TeamPage({ params }: { params: Promise<{ id: string }> }
     const fetchData = async () => {
         try {
             // get Team
-            // const res = await fetch(`/api/team?id=${id}`);
-            // if (!res.ok) throw new Error("Failed to fetch");
-            // const data = await res.json();
-            // console.log(data)
-            // setTeamData(data[0])
+            const res = await fetch(`/api/team?id=${id}`);
+            if (!res.ok) throw new Error("Failed to fetch");
+            const data = await res.json();
+            const teamObj = data[0]
+            setTeamData(data[0])
+            console.log('teamObj', teamObj)
 
-            setTeamData(team)
+            // setTeamData(team)
 
             // getTransfer
-            // const res = await fetch(`/api/transfers?teamId=${temp.team.id}`);
-            // if (!res.ok) throw new Error("Failed to fetch");
-            // const transfers = await res.json();
+            // const resTr = await fetch(`/api/transfers?teamId=${temp.team.id}`);
+            // if (!resTr.ok) throw new Error("Failed to fetch");
+            // const transfers = await resTr.json();
             // console.log('transfers--->', transfers)
             // dispatch(setTransfers(transfers))
 
@@ -47,19 +48,19 @@ export default function TeamPage({ params }: { params: Promise<{ id: string }> }
 
 
             // get roster
-            // const res = await fetch(`/api/players/squads?teamId=${temp.team.id}`);
-            // if (!res.ok) throw new Error("Failed to fetch");
-            // const players = await res.json();
+            // const resPlayer = await fetch(`/api/players/squads?teamId=${teamObj.team.id}`);
+            // if (!resPlayer.ok) throw new Error("Failed to fetch");
+            // const players = await resPlayer.json();
             // console.log('players--->', players)
-            // dispatch(setPlayers(players))
+            // dispatch(setPlayers(players[0].players))
 
 
             dispatch(setPlayers(players.players))
 
             // get Coach
-            // const res = await fetch(`/api/team/coach?teamId=${temp.team.id}`);
-            // if (!res.ok) throw new Error("Failed to fetch");
-            // const coach = await res.json();
+            // const resCoach = await fetch(`/api/team/coach?teamId=${teamObj.team.id}`);
+            // if (!resCoach.ok) throw new Error("Failed to fetch");
+            // const coach = await resCoach.json();
             // console.log('coach--->', coach)
             // dispatch(setCoach(coach[0]))
 
@@ -67,7 +68,7 @@ export default function TeamPage({ params }: { params: Promise<{ id: string }> }
 
 
             // get statistics
-            // const resStatistics = await fetch(`/api/team/statistics?league=${league.league.id}&season=${season}&teamId=${temp.team.id}`);
+            // const resStatistics = await fetch(`/api/team/statistics?league=${league.league.id}&season=${season}&teamId=${teamObj.team.id}`);
             // if (!resStatistics.ok) throw new Error("Failed to fetch");
             // const statistics = await resStatistics.json();
             // console.log('statistics--->', statistics)
@@ -82,7 +83,8 @@ export default function TeamPage({ params }: { params: Promise<{ id: string }> }
 
     React.useEffect(() => {
         fetchData()
-    }, [])
+
+    }, [id])
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setTab(newValue)

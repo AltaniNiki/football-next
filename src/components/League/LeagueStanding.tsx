@@ -67,7 +67,7 @@ export default function LeagueStanding() {
 
     const standing = useAppSelector((state) => state.league.standing)
     const onSelectTeam = (row: object) => {
-        router.push(`/team/${row.id}`)
+        router.push(`/team/${row?.id}`)
     }
 
     return (
@@ -76,29 +76,29 @@ export default function LeagueStanding() {
                 team: ({ row }) => (
                     <div style={{ display: "flex", alignItems: "center", gap: 8, cursor: 'pointer' }} onClick={() => onSelectTeam(row.team)}>
                         <img
-                            src={row.team.logo}
-                            alt={row.team.name}
+                            src={row?.team?.logo}
+                            alt={row?.team?.name}
                             width={20}
                             height={20}
                             style={{ objectFit: "contain" }}
                         />
-                        <span >{row.team.name}</span>
+                        <span >{row?.team?.name}</span>
                     </div>
                 ),
                 match: ({ row }) => (
-                    <span>{row.all.played}</span>
+                    <span>{row?.all?.played}</span>
                 ),
                 wins: ({ row }) => (
-                    <span>{row.all.win}</span>
+                    <span>{row?.all?.win}</span>
                 ),
                 draw: ({ row }) => (
-                    <span>{row.all.draw}</span>
+                    <span>{row?.all?.draw}</span>
                 ),
                 lose: ({ row }) => (
-                    <span>{row.all.lose}</span>
+                    <span>{row?.all?.lose}</span>
                 ),
                 goals: ({ row }) => (
-                    <span>{row.all.goals.for + ':' + row.all.goals.against}</span>
+                    <span>{row?.all?.goals?.for + ':' + row?.all?.goals?.against}</span>
                 )
             }} />)}
         </Box>

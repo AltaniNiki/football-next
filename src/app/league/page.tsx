@@ -29,49 +29,50 @@ export default function LeaguePage({ }) {
     const fetchData = async () => {
 
         // league standing
-        // const res = await fetch(`/api/standing?league=${league?.league?.id}&season=${season}`);
-        // if (!res.ok) throw new Error("Failed to fetch");
-        // const data = await res.json();
-        // console.log("standing--->", data);
-        // if (data.length > 0) {
-        console.log('fetchData')
+        const res = await fetch(`/api/standing?league=${league?.league?.id}&season=${season}`);
+        if (!res.ok) throw new Error("Failed to fetch");
+        const data = await res.json();
+       
+        if (data.length > 0) {
 
 
-        const tempStanding: StandingItem[] = standing
-        dispatch(setStanding(tempStanding))
-        // dispatch(setStanding(data[0].league.standings));
-        // }
+
+            // const tempStanding: StandingItem[] = standing
+            // dispatch(setStanding(tempStanding))
+            dispatch(setStanding(data[0].league.standings[0]));
+        }
 
         // league matches
-        // const matches = await fetch(`/api/matches?league=${league?.league?.id}&season=${season}`);
-        // if (!matches.ok) throw new Error("Failed to fetch");
-        // const m = await matches.json();
-        // console.log('matches ----->', m)
-        // if (m.length > 0) {
-        //     dispatch(setMatches(m))
-        // }
-        const tempMatch: FixtureServiceItem[] = match
+        const matches = await fetch(`/api/matches?league=${league?.league?.id}&season=${season}`);
+        if (!matches.ok) throw new Error("Failed to fetch");
+        const m: FixtureServiceItem[] = await matches.json();
+     
+        if (m.length > 0) {
+            dispatch(setMatches(m))
+        }
+        // const tempMatch: FixtureServiceItem[] = match
 
-        dispatch(setMatches(tempMatch))
+        // dispatch(setMatches(tempMatch))
 
         // league topScores
-        // const respTop = await fetch(`/api/players/top-scorers?league=${league?.league?.id}&season=${season}`);
-        // if (!respTop.ok) throw new Error("Failed to fetch");
-        // const topScorers = await respTop.json();
-        // console.log('topScorers ----->', topScorers)
-        // if (topScorers.length > 0) {
-        //     dispatch(setTopScorers(topScorers))
-        // }
+        const respTop = await fetch(`/api/players/top-scorers?league=${league?.league?.id}&season=${season}`);
+        if (!respTop.ok) throw new Error("Failed to fetch");
+        const topScorers: TopScoreItem[] = await respTop.json();
+     
+        if (topScorers.length > 0) {
+            dispatch(setTopScorers(topScorers))
+        }
 
-        var tempTop: TopScoreItem[] = topScorers
-        dispatch(setTopScorers(tempTop))
+        // var tempTop: TopScoreItem[] = topScorers
+        // dispatch(setTopScorers(tempTop))
     };
 
     React.useEffect(() => {
         if (league?.league?.id) {
             fetchData();
         }
-    }, [league?.league?.id, dispatch]);
+         // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [league?.league?.id,season]);
 
     return (
         <Grid container spacing={3}>

@@ -18,9 +18,9 @@ export function transformStatistics(data: TeamStatistics | null) {
     result.push({
         id: "games_row",
         column1: "Game played",
-        column2: data?.fixtures.played.home,
-        column3: data?.fixtures.played.away,
-        column4: data?.fixtures.played.total,
+        column2: data?.fixtures?.played?.home,
+        column3: data?.fixtures?.played?.away,
+        column4: data?.fixtures?.played?.total,
         style: null,
         cellStyle: null
     })
@@ -29,9 +29,9 @@ export function transformStatistics(data: TeamStatistics | null) {
     result.push({
         id: "wins_row",
         column1: "Wins",
-        column2: data?.fixtures.wins.home,
-        column3: data?.fixtures.wins.away,
-        column4: data?.fixtures.wins.total,
+        column2: data?.fixtures?.wins?.home,
+        column3: data?.fixtures?.wins?.away,
+        column4: data?.fixtures?.wins?.total,
         style: null,
         cellStyle: null
     })
@@ -40,9 +40,9 @@ export function transformStatistics(data: TeamStatistics | null) {
     result.push({
         id: "draws_row",
         column1: "Draws",
-        column2: data?.fixtures.draws.home,
-        column3: data?.fixtures.draws.away,
-        column4: data?.fixtures.draws.total,
+        column2: data?.fixtures?.draws?.home,
+        column3: data?.fixtures?.draws?.away,
+        column4: data?.fixtures?.draws?.total,
         style: null,
         cellStyle: null
     })
@@ -52,9 +52,9 @@ export function transformStatistics(data: TeamStatistics | null) {
     result.push({
         id: "loses_row",
         column1: "Loses",
-        column2: data?.fixtures.loses.home,
-        column3: data?.fixtures.loses.away,
-        column4: data?.fixtures.loses.total,
+        column2: data?.fixtures?.loses?.home,
+        column3: data?.fixtures?.loses?.away,
+        column4: data?.fixtures?.loses?.total,
         style: null,
         cellStyle: null
     })
@@ -74,9 +74,9 @@ export function transformStatistics(data: TeamStatistics | null) {
     result.push({
         id: "goalsFor_row",
         column1: "Goals for",
-        column2: data?.goals.for.total.home,
-        column3: data?.goals.for.total.away,
-        column4: data?.goals.for.total.total,
+        column2: data?.goals?.for?.total?.home,
+        column3: data?.goals?.for?.total?.away,
+        column4: data?.goals?.for?.total?.total,
         style: null,
         cellStyle: null
     })
@@ -85,9 +85,9 @@ export function transformStatistics(data: TeamStatistics | null) {
     result.push({
         id: "goalsAgainst_row",
         column1: "Goals against",
-        column2: data?.goals.against.total.home,
-        column3: data?.goals.against.total.away,
-        column4: data?.goals.against.total.total,
+        column2: data?.goals?.against?.total?.home,
+        column3: data?.goals?.against?.total?.away,
+        column4: data?.goals?.against?.total?.total,
         style: null,
         cellStyle: null
     })

@@ -54,12 +54,12 @@ export type StandingItem = {
         name: string,
         logo: string
     },
-    points: string,
-    goalsDiff: string,
+    points: number,
+    goalsDiff: number,
     group: string,
     form: string,
     status: string,
-    description: string,
+    description: string | null,
     all: {
         played: number | null,
         win: number,
@@ -109,18 +109,20 @@ export type PlayerProfileItem = {
     name: string,
     firstname: string,
     lastname: string,
-    age: string,
+    age: number,
     nationality: string,
     height: string,
     weight: string,
-    number: number,
-    position: string,
     photo: string,
     birth: {
         date: string,
         place: string,
         country: string
-    }
+    },
+    injured?: boolean,
+    number?: number,
+    position?: string
+
 }
 
 
@@ -130,7 +132,7 @@ export type FixtureServiceItem = {
         id: number,
         referee: string,
         timezone: string,
-        data: string,
+        date: string,
         timestamp: number,
         periods: {
             first: number,
@@ -163,13 +165,13 @@ export type FixtureServiceItem = {
             id: number,
             name: string,
             logo: string,
-            winner: boolean
+            winner: boolean | null
         },
         away: {
             id: number,
             name: string,
             logo: string,
-            winner: boolean
+            winner: boolean | null
         }
     },
     goals: {
@@ -217,7 +219,7 @@ export type PlayerStatistic = {
         number: number | null,
         position: string | null,
         rating: string | null,
-        captain: string | null,
+        captain: boolean | null,
     },
     substitutes: {
         in: number,
@@ -225,8 +227,8 @@ export type PlayerStatistic = {
         bench: number
     },
     shots: {
-        total: number,
-        on: number
+        total: number | null,
+        on: number | null
     },
     goals: {
         total: number | null,
@@ -274,7 +276,7 @@ export type PlayerStatistic = {
 
 export type TopScoreItem = {
     player: PlayerProfileItem,
-    statitstics: PlayerStatistic[]
+    statitstics?: PlayerStatistic[]
 }
 
 //--- squad ---//
@@ -377,35 +379,35 @@ export type TeamStatistics = {
             minute: {
                 "0-15": {
                     total: number | null,
-                    percentage: string
+                    percentage: string | null
                 },
                 "16-30": {
                     total: number | null,
-                    percentage: string
+                    percentage: string | null
                 },
                 "31-45": {
                     total: number | null,
-                    percentage: string
+                    percentage: string | null
                 },
                 "46-60": {
                     total: number | null,
-                    percentage: string
+                    percentage: string | null
                 },
                 "61-75": {
                     total: number | null,
-                    percentage: string
+                    percentage: string | null
                 },
                 "76-90": {
                     total: number | null,
-                    percentage: string
+                    percentage: string | null
                 },
                 "91-105": {
                     total: number | null,
-                    percentage: string
+                    percentage: string | null
                 },
                 "106-120": {
                     total: number | null,
-                    percentage: string
+                    percentage: string | null
                 }
             }
             under_over: {
@@ -446,35 +448,35 @@ export type TeamStatistics = {
             minute: {
                 "0-15": {
                     total: number | null,
-                    percentage: string
+                    percentage: string | null
                 },
                 "16-30": {
                     total: number | null,
-                    percentage: string
+                    percentage: string | null
                 },
                 "31-45": {
                     total: number | null,
-                    percentage: string
+                    percentage: string | null
                 },
                 "46-60": {
                     total: number | null,
-                    percentage: string
+                    percentage: string | null
                 },
                 "61-75": {
                     total: number | null,
-                    percentage: string
+                    percentage: string | null
                 },
                 "76-90": {
                     total: number | null,
-                    percentage: string
+                    percentage: string | null
                 },
                 "91-105": {
                     total: number | null,
-                    percentage: string
+                    percentage: string | null
                 },
                 "106-120": {
                     total: number | null,
-                    percentage: string
+                    percentage: string | null
                 }
             }
             under_over: {

@@ -91,12 +91,12 @@ export default function TeamPage({ params }: { params: Promise<{ id: string }> }
     return (
         <Grid container spacing={3}>
             <Grid size={12}>
-                {![null, undefined].includes(team) && (<TeamCard
-                    name={team?.team?.name}
-                    national={team?.team?.country}
-                    logo={team?.team?.logo}
-                    venue={team?.venue?.name}
-                    venueCapacity={team?.venue?.capacity} />)}
+                {teamData != null && (<TeamCard
+                    name={teamData?.team.name}
+                    national={teamData?.team.country}
+                    logo={teamData?.team?.logo}
+                    venue={teamData?.venue?.name}
+                    venueCapacity={teamData?.venue?.capacity} />)}
             </Grid>
             <Grid size={12}>
                 <Box sx={{ backgroundColor: '#15181A', paddingLeft: '15px', paddingRight: '15px', borderRadius: '10px' }}>

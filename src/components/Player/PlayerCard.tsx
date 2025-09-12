@@ -8,12 +8,12 @@ import Typography from "@mui/material/Typography";
 type PlayerCardProps = {
     name: string,
     photo: string,
-    age: string,
+    age: number,
     nationality: string,
     birth: string,
     height: string,
     weight: string,
-    position: string
+    position: string | undefined
 }
 
 export default function PlayerCard({ name, photo, age, nationality, birth, height, weight, position }: PlayerCardProps) {

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TopScoreItem, LeagueItem, StandingItem, FixtureServiceItem } from '@/types/api-football';
 
-type LeagueState = { league: LeagueItem | null, standing: StandingItem | null, matches: Array<FixtureServiceItem | null>, topScorers: Array<TopScoreItem | null>, season: string };
+type LeagueState = { league: LeagueItem | null, standing: StandingItem[] | null, matches: FixtureServiceItem[] | null, topScorers: TopScoreItem[], season: string };
 const initialState: LeagueState = { league: null, standing: null, matches: [], topScorers: [], season: "2023" };
 
 const leagueSlice = createSlice({
@@ -11,13 +11,13 @@ const leagueSlice = createSlice({
         setLeague(state, action: PayloadAction<LeagueItem>) {
             state.league = action.payload;
         },
-        setStanding(state, action: PayloadAction<StandingItem>) {
+        setStanding(state, action: PayloadAction<StandingItem[] | null>) {
             state.standing = action.payload
         },
-        setMatches(state, action: PayloadAction<Array<FixtureServiceItem>>) {
+        setMatches(state, action: PayloadAction<FixtureServiceItem[] | null>) {
             state.matches = action.payload
         },
-        setTopScorers(state, action: PayloadAction<Array<TopScoreItem>>) {
+        setTopScorers(state, action: PayloadAction<TopScoreItem[]>) {
             state.topScorers = action.payload
         }
     },

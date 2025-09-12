@@ -11,6 +11,7 @@ import LeagueTopScorers from "@/components/League/LeagueTopScorers";
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { setStanding, setMatches, setTopScorers } from "@/app/store/slices/leagueSlice";
 import { standing, match, topScorers } from "@/models/league"
+import type { StandingItem, FixtureServiceItem, TopScoreItem } from "@/types/api-football"
 
 
 export default function LeaguePage({ }) {
@@ -34,10 +35,10 @@ export default function LeaguePage({ }) {
         // console.log("standing--->", data);
         // if (data.length > 0) {
         console.log('fetchData')
-        var temp = standing
 
 
-        dispatch(setStanding(temp))
+        const tempStanding: StandingItem[] = standing
+        dispatch(setStanding(tempStanding))
         // dispatch(setStanding(data[0].league.standings));
         // }
 
@@ -49,7 +50,7 @@ export default function LeaguePage({ }) {
         // if (m.length > 0) {
         //     dispatch(setMatches(m))
         // }
-        var tempMatch = match
+        const tempMatch: FixtureServiceItem[] = match
 
         dispatch(setMatches(tempMatch))
 
@@ -62,7 +63,7 @@ export default function LeaguePage({ }) {
         //     dispatch(setTopScorers(topScorers))
         // }
 
-        var tempTop = topScorers
+        var tempTop: TopScoreItem[] = topScorers
         dispatch(setTopScorers(tempTop))
     };
 

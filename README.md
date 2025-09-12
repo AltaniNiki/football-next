@@ -40,23 +40,23 @@ This project uses the API-Football service.
     ```bash
     git clone https://github.com/AltaniNiki/football-next.git
     cd football-next
-    ```
+
 
     2.	Install dependencies:
 
-    ```bash
+  
     npm install
-    ```
+  
 
 	3.	Set up your API key from API-Football.
 
-    ```bash
+  
     APISPORTS_KEY=your_api_key
-    ```
+   
 
 	4.	Run the development server:
 
-    ```bash
+    
         npm run dev
     ```
     

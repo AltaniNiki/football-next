@@ -23,7 +23,7 @@ export default function LeagueList() {
 
     const leagues = React.useMemo(() => {
         return leagueList.filter((l) => {
-            if (['NA', 'GR', 'GB-ENG'].includes(l.country.code) && [2024, 2025].includes(l.seasons[0].year)) {
+            if (['NA', 'GR', 'GB-ENG'].includes(l?.country?.code) && [2024, 2025].includes(l.seasons[0].year)) {
                 return l;
             }
         })
@@ -48,7 +48,7 @@ export default function LeagueList() {
     const dispatch = useAppDispatch();
 
 
-    const onSelectLeague = (data: object) => {
+    const onSelectLeague = (data: LeagueItem) => {
         dispatch(setLeague(data))
         setSelected(data.league.id)
         router.push(`/league`)

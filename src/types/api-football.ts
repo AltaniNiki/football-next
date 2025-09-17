@@ -9,8 +9,8 @@ export type LeagueInfo = {
 
 export type CountryInfo = {
     name: string;
-    code: string;
-    flag: string;
+    code: string | null;
+    flag: string | null;
 };
 
 export type CoverageInfo = {
@@ -34,8 +34,8 @@ export type FixturesInfo = {
 
 export type SeasonInfo = {
     year: number,
-    start: string,
-    end: string,
+    start: string | null,
+    end: string | null,
     current: boolean,
 }
 

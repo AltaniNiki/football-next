@@ -19,9 +19,10 @@ describe('testing playerCard component', () => {
 
     it('check if render the props', () => {
         expect(screen.getByText('S. Ortega')).toBeInTheDocument()
-        expect(screen.getByText('26')).toBeInTheDocument()
         expect(screen.getByText('Greece')).toBeInTheDocument()
-        expect(screen.getByText('1996-03-19')).toBeInTheDocument()
+        expect(screen.getByText(/1996-03-19/i)).toBeInTheDocument();
+        expect(screen.getByText(/\(26 age\)/i)).toBeInTheDocument();
+        // expect(screen.getByText('/1996-03-19\s*\(26 age\)/i')).toBeInTheDocument()
         expect(screen.getByText('164cm')).toBeInTheDocument()
         expect(screen.getByText('60kg')).toBeInTheDocument()
         expect(screen.getByText('middle')).toBeInTheDocument()

@@ -8,6 +8,7 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container"
 import ReduxProvider from '../app/store/ReduxProvider';
 import { Ubuntu_Mono } from "next/font/google";
+import Script from "next/script";
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -31,7 +32,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
+  
+const hotjarId = 6531563; // π.χ. 3928475
+const hotjarSv = 6;
 
 
   return (
@@ -55,6 +58,20 @@ export default function RootLayout({
             </ReduxProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>
+            {hotjarId && (
+          <Script id="hotjar" strategy="afterInteractive">
+            {`
+              (function(h,o,t,j,a,r){
+                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                h._hjSettings={hjid:${hotjarId},hjsv:${hotjarSv}};
+                a=o.getElementsByTagName('head')[0];
+                r=o.createElement('script');r.async=1;
+                r.src=t+h._hjSettings.hjid+j+_hjSettings.hjsv;
+                a.appendChild(r);
+              })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+            `}
+          </Script>
+        )}Ï
       </body>
     </html>
   );

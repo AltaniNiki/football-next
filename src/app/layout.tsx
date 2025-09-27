@@ -36,6 +36,7 @@ export default function RootLayout({
 const hotjarId = 6531563; // π.χ. 3928475
 const hotjarSv = 6;
 const token = 'rUeQl';
+const widgetId =492338564;
 
 
   return (
@@ -80,6 +81,19 @@ const token = 'rUeQl';
             src={`https://w.appzi.io/w.js?token=${token}`}
           />
         )}
+         {widgetId && (
+          <Script id="sleekplan" strategy="afterInteractive">
+            {`
+              (function(w,d,s,o,f,js,fjs){
+                w['SleekplanObject']=o;
+                w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments)};
+                js=d.createElement(s),fjs=d.getElementsByTagName(s)[0];
+                js.id=o;js.src='https://client.sleekplan.com/sdk/e.js';js.async=1;
+                fjs.parentNode.insertBefore(js,fjs);
+              }(window,document,'script','sleek'));
+              sleek('init', { widgetId: '${widgetId}' });
+            `}
+          </Script>
       </body>
     </html>
   );

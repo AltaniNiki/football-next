@@ -35,6 +35,7 @@ export default function RootLayout({
   
 const hotjarId = 6531563; // π.χ. 3928475
 const hotjarSv = 6;
+const token = 'rUeQl';
 
 
   return (
@@ -71,7 +72,14 @@ const hotjarSv = 6;
               })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
             `}
           </Script>
-        )}Ï
+        )}
+         {token && (
+          <Script
+            id="appzi"
+            strategy="afterInteractive"
+            src={`https://w.appzi.io/w.js?token=${token}`}
+          />
+        )}
       </body>
     </html>
   );

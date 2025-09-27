@@ -91,7 +91,7 @@ const widgetId =492338564;
                 js.id=o;js.src='https://client.sleekplan.com/sdk/e.js';js.async=1;
                 fjs.parentNode.insertBefore(js,fjs);
               }(window,document,'script','sleek'));
-              sleek('init', { widgetId: '${widgetId}' });
+              sleek('init', { widgetId: ${widgetId} });
             `}
           </Script>)}
       </body>

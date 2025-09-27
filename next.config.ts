@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   // Προαιρετικά: αγνόησε TypeScript errors στο build
-  typescript: { ignoreBuildErrors: true },Ï
+  typescript: { ignoreBuildErrors: true },
 };
 
 export default nextConfig;

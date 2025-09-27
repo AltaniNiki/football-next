@@ -93,7 +93,7 @@ const widgetId =492338564;
               }(window,document,'script','sleek'));
               sleek('init', { widgetId: '${widgetId}' });
             `}
-          </Script>
+          </Script>}
       </body>
     </html>
   );

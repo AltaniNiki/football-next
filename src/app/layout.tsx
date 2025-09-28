@@ -109,7 +109,7 @@ const envId='cmg3dx7dh2mkevb019ftlec7b';
               {`
                 (function initFormbricks(){
                   var environmentId = "${envId}";
-                  var apiHost = "https://app.formbricks.com/s";
+                  var apiHost = "https://app.formbricks.com/";
 
                   function start(){
                     if (window.Formbricks) {

@@ -82,7 +82,7 @@ const envId='cmg3dx7dh2mkevb019ftlec7b';
             src={`https://w.appzi.io/w.js?token=${token}`}
           />
         )}
-         {widgetId && (
+         /* {widgetId && (
           <Script id="sleekplan" strategy="afterInteractive">
             {`
               (function(w,d,s,o,f,js,fjs){
@@ -94,8 +94,8 @@ const envId='cmg3dx7dh2mkevb019ftlec7b';
               }(window,document,'script','sleek'));
               sleek('init', { widgetId: ${widgetId} });
             `}
-          </Script>)}
-      {envId && (
+          </Script>)} */
+      /* {envId && (
           <>
             {/* 1) Φόρτωσε το client script του Formbricks */}
             <Script
@@ -124,7 +124,7 @@ const envId='cmg3dx7dh2mkevb019ftlec7b';
               `}
             </Script>
           </>
-        )}
+        )} */
       </body>
     </html>
   );

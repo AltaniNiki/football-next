@@ -37,7 +37,7 @@ const hotjarId = 6531563; // π.χ. 3928475
 const hotjarSv = 6;
 const token = 'rUeQl';
 const widgetId =492338564;
-const formbricksEnv='cmg3cfs9g5hbhx50144b7ng79';
+const envId='cmg3cfs9g5hbhx50144b7ng79';
 
 
   return (
@@ -95,21 +95,35 @@ const formbricksEnv='cmg3cfs9g5hbhx50144b7ng79';
               sleek('init', { widgetId: ${widgetId} });
             `}
           </Script>)}
-        {formbricksEnv &&(
-      <Script id="formbricks" strategy="afterInteractive">
-       {`
-              (function() {
-                var appUrl = "https://app.formbricks.com"; 
-                var environmentId = "${formbricksEnv}";
-                var t = document.createElement("script");
-                t.type = "text/javascript";
-                t.async = true;
-                t.src = appUrl + "/js/formbricks.umd.cjs";
-                var e = document.getElementsByTagName("script")[0];
-                e.parentNode.insertBefore(t, e);
-              })();
-            `}
-      </Script>
+      {envId && (
+          <>
+            {/* 1) Φόρτωσε το client script του Formbricks */}
+            <Script
+              id="formbricks-lib"
+              src="https://app.formbricks.com/js/formbricks.umd.cjs"
+              strategy="afterInteractive"
+            />
+
+            {/* 2) Κάνε initialize μόλις είναι διαθέσιμο */}
+            <Script id="formbricks-init" strategy="afterInteractive">
+              {`
+                (function initFormbricks(){
+                  var environmentId = "${envId}";
+                  var apiHost = "https://app.formbricks.com/s";
+
+                  function start(){
+                    if (window.Formbricks) {
+                      window.Formbricks({ environmentId: environmentId, apiHost: apiHost });
+                    } else {
+                      // περίμενε λίγο ακόμη αν δεν έχει φορτώσει το script
+                      setTimeout(start, 100);
+                    }
+                  }
+                  start();
+                })();
+              `}
+            </Script>
+          </>
         )}
       </body>
     </html>

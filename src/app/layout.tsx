@@ -37,6 +37,7 @@ const hotjarId = 6531563; // π.χ. 3928475
 const hotjarSv = 6;
 const token = 'rUeQl';
 const widgetId =492338564;
+const formbricksEnv='cmg3cfs9g5hbhx50144b7ng79';
 
 
   return (
@@ -94,6 +95,17 @@ const widgetId =492338564;
               sleek('init', { widgetId: ${widgetId} });
             `}
           </Script>)}
+        {formbricksEnv &&(
+      <Script id="formbricks" strategy="afterInteractive">
+        {`
+        function(){
+    var appUrl = "https://app.formbricks.com"; // use PUBLIC_URL if you are using multi-domain setup, otherwise use WEBAPP_URL
+    var environmentId = ${formbricksEnv};
+var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=appUrl+"/js/formbricks.umd.cjs";var e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e),setTimeout(function(){window.formbricks.setup({environmentId: environmentId, appUrl: appUrl})},500)}();
+
+        `}
+      </Script>
+        )}
       </body>
     </html>
   );

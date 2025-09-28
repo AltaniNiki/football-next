@@ -37,7 +37,7 @@ const hotjarId = 6531563; // π.χ. 3928475
 const hotjarSv = 6;
 const token = 'rUeQl';
 const widgetId =492338564;
-const envId='cmg3cfs9g5hbhx50144b7ng79';
+const envId='cmg3dx7dh2mkevb019ftlec7b';
 
 
   return (
